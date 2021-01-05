@@ -26,22 +26,32 @@ class Search extends Component {
         });
         console.log(value);
 
-        const newEmployeeList = this.state.originalList.filter(employee => {
-            return (employee.name.first.toLowerCase() + " " + employee.name.last.toLowerCase()).includes(value.toLowerCase())   || employee.name.first.toLowerCase().includes(value.toLowerCase()) || 
-            employee.name.last.toLowerCase().includes(value.toLowerCase());
+        // const sortedEmployeeList = this.state.originalList.sort(function (a, b) {
+
+        //     var nameA = a.name.first.toLowerCase() + " " + a.name.last.toLowerCase(), nameB = b.name.first.toLowerCase() + " " + b.name.last.toLowerCase();
+        //     return nameA - nameB;
+
+        // })
+
+        // console.log(sortedEmployeeList);
+        // this.setState({
+        //     employeeList: sortedEmployeeList
+        // });
+
+        const filteredEmployeeList = this.state.originalList.filter(employee => {
+            return (employee.name.first.toLowerCase() + " " + employee.name.last.toLowerCase()).includes(value.toLowerCase()) || employee.name.first.toLowerCase().includes(value.toLowerCase()) ||
+                employee.name.last.toLowerCase().includes(value.toLowerCase());
         })
-        // console.log(newEmployeeList);
+        //console.log(filteredEmployeeList);
 
         this.setState({
-            employeeList: newEmployeeList
+            employeeList: filteredEmployeeList
         });
 
-    }   
+    }
 
     handleFormSubmit = event => {
-        // call fetch Employees
         event.preventDefault();
-
     }
 
     fetchEmployeeDetails() {
@@ -51,7 +61,6 @@ class Search extends Component {
         })
     }
 
-
     render() {
         return (
             <>
@@ -59,18 +68,15 @@ class Search extends Component {
                     <div className="col">
                         <SearchForm
                             handleInputChange={this.handleInputChange}
-                            handleFormSubmit={this.handleFormSubmit}
                             searchTerm={this.searchTerm}
-                            options={this.state.employeeList}
+                            employee={this.state.employeeList}
                         />
-
                     </div>
                 </div>
                 <br />
                 <Table
                     employeeList={this.state.employeeList}
                 />
-
             </>
         )
     }
