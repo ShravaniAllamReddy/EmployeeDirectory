@@ -1,31 +1,30 @@
 import React from "react";
 
 function SearchForm(props) {
-    const { searchTerm, handleInputChange, handleFormSubmit, options } = props;
+    const { searchTerm, handleInputChange, employee } = props;
     return (<>
-        <form onSubmit={handleFormSubmit}>
+        <form>
             <div className="form-group">
-                <br /> 
+                <br />
                 <input
                     className="form-control"
                     name="searchTerm"
-                    list="options"
+                    list="employee"
                     type="text"
                     value={searchTerm}
                     onChange={handleInputChange}
                     placeholder={`Search`}
                 />
-                <datalist id="options">
-                    {options && options.length > 0 ? options.map(option => (
-                        <option value={option.name.first + " " + option.name.last} key={option.id} />
+                <datalist id="employee">
+                    {employee && employee.length > 0 ? employee.map(emp => (
+                        <option value={emp.name.first + " " + emp.name.last} key={emp.id} />
                     )) : <></>}
                 </datalist>
 
             </div>
-            <button type="submit" className="btn btn-primary">Search</button>
         </form>
     </>
     )
 }
 
-export default SearchForm
+export default SearchForm;
