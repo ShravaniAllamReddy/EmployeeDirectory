@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Component } from 'react';
 import { getEmployeeDetails } from '../utils/API';
@@ -11,8 +10,8 @@ import Table from "./Table";
 class Search extends Component {
     state = {
         searchTerm: "",
-        employeeList: []
-
+        employeeList: [],
+        originalList: []
     }
 
     componentDidMount() {
@@ -27,8 +26,17 @@ class Search extends Component {
         });
         console.log(value);
 
+        const newEmployeeList = this.state.originalList.filter(employee => {
+            return (employee.name.first.toLowerCase() + " " + employee.name.last.toLowerCase()).includes(value.toLowerCase())   || employee.name.first.toLowerCase().includes(value.toLowerCase()) || 
+            employee.name.last.toLowerCase().includes(value.toLowerCase());
+        })
+        // console.log(newEmployeeList);
 
-    }
+        this.setState({
+            employeeList: newEmployeeList
+        });
+
+    }   
 
     handleFormSubmit = event => {
         // call fetch Employees
@@ -39,7 +47,7 @@ class Search extends Component {
     fetchEmployeeDetails() {
         getEmployeeDetails().then(res => {
 
-            this.setState({ employeeList: res.data.results })
+            this.setState({ employeeList: res.data.results, originalList: res.data.results })
         })
     }
 

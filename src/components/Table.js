@@ -6,7 +6,7 @@ function Table(props) {
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">Picture</th>
+                    <th scope="col">Image</th>
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">D.O.B</th>
@@ -21,7 +21,7 @@ function Table(props) {
                             return (
                                 <tr key={employee.id}>
                                     <td>
-                                        <img src={employee.picture.medium} />
+                                        <img alt={employee.name.first} src={employee.picture.medium} />
                                     </td>
                                     <td> {employee.name.first + " " + employee.name.last} </td>
                                     <td>{employee.email}</td>
