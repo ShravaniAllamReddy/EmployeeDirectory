@@ -14,7 +14,8 @@ class Search extends Component {
         originalList: [],
         sortedType: "ascend"
     }
-
+    
+    //default method when page loads
     componentDidMount() {
         this.fetchEmployeeDetails();
     }
@@ -27,6 +28,7 @@ class Search extends Component {
         });
         console.log(value);
 
+        // filters the employeelist by name
         const filteredEmployeeList = this.state.originalList.filter(employee => {
             return (employee.name.first.toLowerCase() + " " + employee.name.last.toLowerCase()).includes(value.toLowerCase()) || employee.name.first.toLowerCase().includes(value.toLowerCase()) ||
                 employee.name.last.toLowerCase().includes(value.toLowerCase());
@@ -39,7 +41,7 @@ class Search extends Component {
 
     }
 
-
+    // sorts the table by name in ascending and descending order
     handleSort = () => {
         let sortedTypeVal = this.state.sortedType;
         let sortedEmployeeList;
@@ -76,6 +78,7 @@ class Search extends Component {
 
     }
 
+    // fetches employee details
     fetchEmployeeDetails() {
         getEmployeeDetails().then(res => {
 
