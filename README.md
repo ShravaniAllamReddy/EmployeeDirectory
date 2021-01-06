@@ -1,4 +1,7 @@
-# EmployeeDirectory
+# ReactEmployeeDirectory
+
+![EmployeeDirectory](snap.PNG)
+
 
 ## Description
 
@@ -15,6 +18,8 @@ The user should be able to:
 * Filter the users by at least one property.
 
 ## Sources Referred 
+
+https://reactjs.org/docs/create-a-new-react-app.html - To create a new React Application
 
 https://www.w3schools.com/js/js_array_sort.asp
 
