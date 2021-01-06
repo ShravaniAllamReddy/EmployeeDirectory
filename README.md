@@ -22,3 +22,5 @@ https://stackoverflow.com/questions/44312924/filter-array-of-objects-whose-any-p
 
 
 ## URL of Deployed Application
+
+https://shravaniallamreddy.github.io/EmployeeDirectory/
