@@ -1,13 +1,15 @@
 import React from "react";
 
 function Table(props) {
-    console.log(props);
+    // console.log(props);
     return (
         <table class="table">
             <thead>
                 <tr>
                     <th scope="col">Image</th>
-                    <th scope="col">Name</th>
+                    <th scope="col" onClick= {props.handleSort}>
+                        Name
+                    </th>
                     <th scope="col">Email</th>
                     <th scope="col">D.O.B</th>
                     <th scope="col">Phone</th>
@@ -23,7 +25,7 @@ function Table(props) {
                                     <td>
                                         <img alt={employee.name.first} src={employee.picture.medium} />
                                     </td>
-                                    <td> {employee.name.first + " " + employee.name.last} </td>
+                                    <td>{employee.name.first + " " + employee.name.last} </td>
                                     <td>{employee.email}</td>
                                     <td>{employee.dob.date}</td>
                                     <td>{employee.phone}</td>
