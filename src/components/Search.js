@@ -11,7 +11,8 @@ class Search extends Component {
     state = {
         searchTerm: "",
         employeeList: [],
-        originalList: []
+        originalList: [],
+        sortedType: "ascend"
     }
 
     componentDidMount() {
@@ -26,18 +27,6 @@ class Search extends Component {
         });
         console.log(value);
 
-        // const sortedEmployeeList = this.state.originalList.sort(function (a, b) {
-
-        //     var nameA = a.name.first.toLowerCase() + " " + a.name.last.toLowerCase(), nameB = b.name.first.toLowerCase() + " " + b.name.last.toLowerCase();
-        //     return nameA - nameB;
-
-        // })
-
-        // console.log(sortedEmployeeList);
-        // this.setState({
-        //     employeeList: sortedEmployeeList
-        // });
-
         const filteredEmployeeList = this.state.originalList.filter(employee => {
             return (employee.name.first.toLowerCase() + " " + employee.name.last.toLowerCase()).includes(value.toLowerCase()) || employee.name.first.toLowerCase().includes(value.toLowerCase()) ||
                 employee.name.last.toLowerCase().includes(value.toLowerCase());
@@ -50,8 +39,41 @@ class Search extends Component {
 
     }
 
-    handleFormSubmit = event => {
-        event.preventDefault();
+
+    handleSort = () => {
+        let sortedTypeVal = this.state.sortedType;
+        let sortedEmployeeList;
+        if (sortedTypeVal === "ascend") {
+
+            sortedTypeVal = "descend"
+            sortedEmployeeList =
+                this.state.employeeList.sort(function (a, b) {
+
+                    var nameA = a.name.first.toLowerCase() + " " + a.name.last.toLowerCase()
+                    var nameB = b.name.first.toLowerCase() + " " + b.name.last.toLowerCase();
+                    return nameA.localeCompare(nameB);
+
+
+                })
+
+        }
+        else {
+            sortedTypeVal = "ascend"
+            sortedEmployeeList =
+                this.state.employeeList.sort(function (a, b) {
+
+                    var nameA = a.name.first.toLowerCase() + " " + a.name.last.toLowerCase()
+                    var nameB = b.name.first.toLowerCase() + " " + b.name.last.toLowerCase();
+                    return nameB.localeCompare(nameA);
+                })
+        }
+
+        console.log(sortedTypeVal);
+        this.setState({
+            sortedType: sortedTypeVal,
+            employeeList: sortedEmployeeList
+        });
+
     }
 
     fetchEmployeeDetails() {
@@ -75,6 +97,7 @@ class Search extends Component {
                 </div>
                 <br />
                 <Table
+                    handleSort={this.handleSort}
                     employeeList={this.state.employeeList}
                 />
             </>
