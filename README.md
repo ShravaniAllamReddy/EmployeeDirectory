@@ -1,4 +1,4 @@
-# ReactEmployeeDirectory
+# React-Employee-Directory
 
 ![EmployeeDirectory](snap.PNG)
 
@@ -19,7 +19,6 @@ The user should be able to:
 
 ## Sources Referred 
 
-https://reactjs.org/docs/create-a-new-react-app.html - To create a new React Application
 
 https://www.w3schools.com/js/js_array_sort.asp
 
