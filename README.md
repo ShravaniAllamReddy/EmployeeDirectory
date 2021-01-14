@@ -2,7 +2,6 @@
 
 ![EmployeeDirectory](snap.PNG)
 
-
 ## Description
 
 This Application allows us to view entire employee directory at once so that one can have quick access to employee information.

@@ -15,7 +15,7 @@
     "react-scripts": "4.0.1",
     "web-vitals": "^0.2.4"
   },
-  "homepage": "https://shravaniallamreddy.github.io/EmployeeDirectory/",
+  "homepage": "https://shravaniallamreddy.github.io/ReactEmployeeDirectory/",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
